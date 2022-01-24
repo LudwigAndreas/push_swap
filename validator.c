@@ -1,4 +1,5 @@
 #include "libftprintf/ft_printf.h"
+#include <stdio.h>
 
 int validator(int argc, char **argv)
 {
@@ -13,7 +14,7 @@ int validator(int argc, char **argv)
 		j = i + 1;
 		while (j < argc)
 		{
-			if (ft_atoi(argv[i]) == ft_atoi(argv[j]))
+			if (ft_atoi(argv[i]) == ft_atoi(argv[j])) //TODO валидация цифр больше и меньше инта
 				return (0);
 			j++;
 		}

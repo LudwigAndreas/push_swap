@@ -1,4 +1,5 @@
 #include "push_swap.h"
+#include <stdio.h>
 //sa - swap a
 //sb - swap b
 //ss - sa && sb
@@ -15,11 +16,13 @@ int main(int argc, char **argv)
 {
 	t_vault *vault;
 
-	if (validator(argc, argv) == 0)
-		ft_printf("Error\n");
+	if (validator(argc, argv) == 0) {
+		ft_putendl_fd("Error", 2);
+		exit(1);
+	}
 	parse(argc,argv, &vault);
-//	is_sorted(vault);
-//	sort(vault);
+//TODO	is_sorted(vault);
+//TODO	sort(vault);
 	t_elem *elem = vault->a->head;
 	while (elem->next != NULL)
 	{
@@ -31,6 +34,5 @@ int main(int argc, char **argv)
 		ft_printf("%d", elem->number);
 		elem = elem->prev;
 	}
-
 	return (0);
 }
