@@ -5,7 +5,8 @@ SRCS := list.c\
 		main.c\
 		moves.c\
 		parse.c\
-		validator.c
+		validator.c\
+		is_sorted.c
 OBJS := $(SRCS:.c=.o)
 RM := rm -rf
 HEADER := push_swap.h
@@ -16,15 +17,15 @@ HEADER := push_swap.h
 	gcc $(CFLAGS) $< -o $@ -include $(HEADER)
 
 $(NAME): $(OBJS) $(HEADER)
-	make re -C libftprintf/
-	gcc $(OFLAGS) $(NAME) $(OBJS) libftprintf/libftprintf.a
+	make re -C libft/
+	gcc $(OFLAGS) $(NAME) $(OBJS) libft/libft.a -include /libft/libft.h
 
 all: $(NAME)
 
 clean:
-	make clean -C libftprintf/
+	make clean -C libft/
 	rm -rf $(OBJS)
 
 fclean: clean
-	make fclean -C libftprintf/
+	make fclean -C libft/
 	rm -rf $(NAME)

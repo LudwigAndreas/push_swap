@@ -1,7 +1,7 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include "libftprintf/ft_printf.h"
+#include "libft/libft.h"
 
 typedef struct s_elem
 {
@@ -27,6 +27,7 @@ typedef struct s_vault
 } t_vault;
 
 int validator(int argc, char **argv);
+int is_sorted(t_stack *stack);
 void parse(int argc, char **argv, t_vault **vault);
 t_elem *ft_newelem(int nbr);
 void	ft_elemadd_back(t_elem **lst, t_elem *new);

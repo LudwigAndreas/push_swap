@@ -11,6 +11,9 @@
 //rra - reverse rotate a;
 //rrb - reverse rotate b;
 //rrr - rra && rrb;
+//algo - проверяем, что массив не отсортирован. После распределяем индексы по нашему массиву.
+//оставляем как можно больше элементов в А (которые последовательно расположены), остальные элементы отправляем в b.
+// теперь осталось переместить каждый элемент из б в а за минимальное количество шагов.зцв
 
 int main(int argc, char **argv)
 {
@@ -21,18 +24,12 @@ int main(int argc, char **argv)
 		exit(1);
 	}
 	parse(argc,argv, &vault);
-//TODO	is_sorted(vault);
+	if (is_sorted(vault->a))
+		exit(0);
+	else
+	{
+		ft_putendl_fd("start sorting...", 1);
+	}
 //TODO	sort(vault);
-	t_elem *elem = vault->a->head;
-	while (elem->next != NULL)
-	{
-		ft_printf("%d", elem->number);
-		elem = elem->next;
-	}
-	while (elem != NULL)
-	{
-		ft_printf("%d", elem->number);
-		elem = elem->prev;
-	}
 	return (0);
 }

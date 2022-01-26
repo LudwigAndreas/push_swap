@@ -1,4 +1,4 @@
-#include "libftprintf/ft_printf.h"
+#include "push_swap.h"
 #include <stdio.h>
 
 int validator(int argc, char **argv)
@@ -14,7 +14,8 @@ int validator(int argc, char **argv)
 		j = i + 1;
 		while (j < argc)
 		{
-			if (ft_atoi(argv[i]) == ft_atoi(argv[j])) //TODO валидация цифр больше и меньше инта
+			//TODO валидация цифр больше и меньше инта 2147483647
+			if (ft_strlen(argv[j]) > 10 || ft_atoi(argv[i]) == ft_atoi(argv[j]))
 				return (0);
 			j++;
 		}
