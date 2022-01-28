@@ -26,11 +26,13 @@ typedef struct s_vault
 
 } t_vault;
 
-int validator(int argc, char **argv);
-int is_sorted(t_stack *stack);
-void parse(int argc, char **argv, t_vault **vault);
-t_elem *ft_newelem(int nbr);
+int validator(int argc, char **argv, int *array);
+int is_sorted(int argc, int *arr);
+void parse(int argc, int *arr, t_vault **vault);
+t_elem *ft_newelem(int nbr, int index);
 void	ft_elemadd_back(t_elem **lst, t_elem *new);
 t_elem 	*ft_elemlast(t_elem *lst);
+void quick_sort(int *numbers, int size);
+void get_indexes(int argc, int *array, int *indexes);
 
 #endif

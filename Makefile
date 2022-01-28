@@ -6,7 +6,9 @@ SRCS := list.c\
 		moves.c\
 		parse.c\
 		validator.c\
-		is_sorted.c
+		is_sorted.c\
+		get_indexes.c\
+		quickSort.c
 OBJS := $(SRCS:.c=.o)
 RM := rm -rf
 HEADER := push_swap.h

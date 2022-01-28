@@ -1,22 +1,15 @@
 #include "push_swap.h"
 
-int is_sorted(t_stack *stack)
+int is_sorted(int argc, int *array)
 {
-	int previous_number;
-	t_elem *elem;
-	int flag = 0;
+	int i;
 
-	elem = stack->head;
-	while (elem != NULL)
+	i = 0;
+	while (i < argc - 2)
 	{
-		previous_number = elem->number;
-		elem = elem->next;
-		if (elem && previous_number > elem->number) {
-			flag = 1;
-			break;
-		}
+		if (array[i] > array[i + 1])
+			return (0);
+		++i;
 	}
-	if (flag == 1)
-		return (0);
 	return (1);
 }

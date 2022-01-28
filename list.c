@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-t_elem *ft_newelem(int nbr)
+t_elem *ft_newelem(int nbr, int index)
 {
 	t_elem *elem;
 
@@ -8,7 +8,7 @@ t_elem *ft_newelem(int nbr)
 	if (!elem)
 		return (NULL);
 	elem->number = nbr;
-	elem->index = 0;
+	elem->index = index;
 	elem->prev = NULL;
 	elem->next = NULL;
 	return (elem);
