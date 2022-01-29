@@ -18,7 +18,7 @@ int validator(int argc, char **argv, int array[])
 		ft_putnbr_fd(ft_atoi(argv[i + 1]), 1);
 		while (argv[i + 1][j++]) {
 			if (argv[i + 1][0] != '-') {
-				if (!ft_isdigit(argv[i + 1][j])) {
+				if (!ft_isdigit(argv[i + 1][j])) { //TODO valid negatives
 					return (0);
 				}
 			}
