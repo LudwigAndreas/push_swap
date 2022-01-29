@@ -6,20 +6,31 @@ int validator(int argc, char **argv, int array[])
 	int i;
 	int j;
 
-
 	if (argc < 2)
 		return (0);
-	i = 1;
-	while (i < argc)
+	i = 0;
+	while (i < argc - 1)
 	{
-		array[i - 1] = ft_atoi(argv[i]);
-		j = i + 1;
-		while (j < argc)
+		if (ft_atoi(argv[i + 1]) > 2147483647
+			|| ft_atoi(argv[i + 1]) < (-2147483648) || ft_strlen(argv[i + 1]) > 11)
+			return (0);
+		j = 0;
+		ft_putnbr_fd(ft_atoi(argv[i + 1]), 1);
+		while (argv[i + 1][j++]) {
+			if (argv[i + 1][0] != '-') {
+				if (!ft_isdigit(argv[i + 1][j])) {
+					return (0);
+				}
+			}
+		}
+		ft_putnbr_fd(ft_atoi(argv[i + 1]), 1);
+		array[i] = ft_atoi(argv[i + 1]);
+		j = i - 1;
+		while (j < argc && j > 0)
 		{
-			//TODO валидация цифр больше и меньше инта 2147483647
-			if (array[i] == ft_atoi(argv[j]))
+			if (array[i] == array[j])
 				return (0);
-			j++;
+			j--;
 		}
 		i++;
 	}

@@ -14,6 +14,15 @@ t_elem *ft_newelem(int nbr, int index)
 	return (elem);
 }
 
+void	ft_elemadd_front(t_elem **lst, t_elem *new)
+{
+	new->next = (*lst);
+	new->prev = NULL;
+	if (*lst)
+		(*lst)->prev = new;
+	(*lst) = new;
+}
+
 void	ft_elemadd_back(t_elem **lst, t_elem *new)
 {
 	t_elem 	*elem;

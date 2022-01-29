@@ -1,25 +1,6 @@
 #include "push_swap.h"
 #include <stdio.h>
-//sa - swap a
-//sb - swap b
-//ss - sa && sb
-//pa - push a
-//pb - push b
-//ra - rotate a;
-//rb - rotate b;
-//rr - ra && rb;
-//rra - reverse rotate a;
-//rrb - reverse rotate b;
-//rrr - rra && rrb;
-//algo - проверяем, что массив не отсортирован. После распределяем индексы по нашему массиву.
-//оставляем как можно больше элементов в А (которые последовательно расположены), остальные элементы отправляем в b.
-// теперь осталось переместить каждый элемент из б в а за минимальное количество шагов.зцв
-//
 
-
-/*
- * Начинаем алгоритм сортировки с учетом индексов
- */
 int main(int argc, char **argv)
 {
 	t_vault *vault;
@@ -43,24 +24,33 @@ int main(int argc, char **argv)
 	}
 	//TODO	sort(vault);
 
-
-	t_elem *elem = vault->a->head;
-	while (elem != NULL)
+//	swap(vault->a);
+//	push(vault->a, vault->b);
+//	rotate(vault->a);
+//	reverse_rotate(vault->a);
+	t_elem *elem_a = vault->a->head;
+	t_elem *elem_b = vault->b->head;
+	ft_putendl_fd("---A---", 1);
+	while (elem_a != NULL)
 	{
-		ft_putnbr_fd(elem->number, 1);
+		ft_putnbr_fd(elem_a->number, 1);
 		ft_putendl_fd("", 1);
-		elem = elem->next;
+		elem_a = elem_a->next;
 	}
-	elem = vault->a->head;
+	elem_a = vault->a->head;
 	ft_putendl_fd("\n", 1);
-	while (elem != NULL)
+	while (elem_a != NULL)
 	{
-		ft_putnbr_fd(elem->index, 1);
+		ft_putnbr_fd(elem_a->index, 1);
 		ft_putendl_fd("", 1);
-		elem = elem->next;
+		elem_a = elem_a->next;
 	}
-
-
-
+	ft_putendl_fd("---B---", 1);
+	while (elem_b != NULL)
+	{
+		ft_putnbr_fd(elem_b->number, 1);
+		ft_putendl_fd("", 1);
+		elem_b = elem_b->next;
+	}
 	return (0);
 }
