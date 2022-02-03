@@ -1,12 +1,13 @@
 #include "push_swap.h"
 
-void parse(int argc, int *arr, t_vault **vault)
+void	parse(int argc, int *arr, t_vault **vault)
 {
-	int i;
-	int indexes[argc - 1];
+	int	i;
+	int	*indexes;
 
+	indexes = (int *) malloc(sizeof(int) * (argc - 1));
 	*vault = (t_vault *) malloc(sizeof(t_vault));
-	if (!(*vault))
+	if (!(*vault) || !indexes)
 		exit(1);
 	(*vault)->a = malloc(sizeof((*vault)->a));
 	(*vault)->b = malloc(sizeof((*vault)->a));
@@ -20,4 +21,5 @@ void parse(int argc, int *arr, t_vault **vault)
 		ft_elemadd_back(&((*vault)->a->head), ft_newelem(arr[i - 1], indexes[i - 1]));
 		i++;
 	}
+	free(indexes);
 }

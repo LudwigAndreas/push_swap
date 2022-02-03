@@ -10,16 +10,16 @@ int main(int argc, char **argv)
 	if (!arr)
 		exit(1);
 	if (validator(argc, argv, arr) == 0) {
-		ft_putendl_fd("Error", 2);
+		ft_putendl_fd("Error", 2);						//main
 		exit(1);
 	}
 	if (is_sorted(argc, arr)) {
-		printf("Sorted");
+        ft_putendl_fd("Sorted", 1);						//trace
 		exit(0);
 	}
 	else
 	{
-		ft_putendl_fd("start sorting...", 1);
+		ft_putendl_fd("start sorting...", 1);			//trace
 		parse(argc, arr, &vault);
 	}
 	//TODO	sort(vault);
@@ -38,7 +38,7 @@ int main(int argc, char **argv)
 		elem_a = elem_a->next;
 	}
 	elem_a = vault->a->head;
-	ft_putendl_fd("\n", 1);
+	ft_putendl_fd("\nINDEXES", 1);
 	while (elem_a != NULL)
 	{
 		ft_putnbr_fd(elem_a->index, 1);

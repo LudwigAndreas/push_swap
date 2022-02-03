@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-void static ft_swap(int *a, int *b)
+void static	ft_swap(int *a, int *b)
 {
 	int tmp;
 
@@ -9,7 +9,7 @@ void static ft_swap(int *a, int *b)
 	*b = tmp;
 }
 
-int static partition(int *numbers, int l, int r)
+int static	partition(int *numbers, int l, int r)
 {
 	int i;
 	int x;
@@ -31,7 +31,7 @@ int static partition(int *numbers, int l, int r)
 	return (less);
 }
 
-void static quick_sort_impl(int *numbers, int l, int r)
+void static	quick_sort_impl(int *numbers, int l, int r)
 {
 	int q;
 
@@ -43,7 +43,7 @@ void static quick_sort_impl(int *numbers, int l, int r)
 	}
 }
 
-void quick_sort(int *numbers, int size)
+void	quick_sort(int *numbers, int size)
 {
 	if (size != 0)
 	{
