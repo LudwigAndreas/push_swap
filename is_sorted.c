@@ -12,9 +12,9 @@
 
 #include "push_swap.h"
 
-int is_sorted(int argc, int *array)
+int	is_sorted(int argc, int *array)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < argc - 2)

@@ -1,38 +1,33 @@
 #include "push_swap.h"
 #include "stdio.h"
 
-void get_indexes(int argc, int *array, int *indexes)
+int	*new_arr(int argc, int *array)
 {
-	int i;
-	int j;
 	int *temp;
+	int i;
 
 	temp = (int *) malloc(sizeof(int) * (argc - 1));
 	if (!temp)
-		return;
+		return (NULL);
 	i = 0;
 	while (i < argc - 1)
 	{
 		temp[i] = array[i];
 		i++;
 	}
-//	i = 0;
-//	ft_putendl_fd("Until sort", 1);
-//	while (i < argc - 1) 							//trace
-//	{
-//		ft_putnbr_fd(temp[i], 1);
-//		ft_putendl_fd("", 1);
-//		i++;
-//	}
+	return (temp);
+}
+
+void	get_indexes(int argc, int *array, int *indexes)
+{
+	int	i;
+	int	j;
+	int	*temp;
+
+	temp = new_arr(argc, array);
+	if (!temp)
+		return;
 	quick_sort(temp, (argc - 2));
-//	i = 0;
-//	ft_putendl_fd("After sort", 1);
-//	while (i < argc - 1) 							//trace
-//	{
-//		ft_putnbr_fd(temp[i], 1);
-//		ft_putendl_fd("", 1);
-//		i++;
-//	}
 	i = 0;
 	while (i < argc - 1)
 	{

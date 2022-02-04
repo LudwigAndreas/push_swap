@@ -3,12 +3,15 @@ CFLAGS := -Wall -Wextra -Werror -c
 OFLAGS := -Wall -Wextra -Werror -o
 SRCS := list.c\
 		main.c\
-		moves.c\
 		parse.c\
 		validator.c\
 		is_sorted.c\
 		get_indexes.c\
-		quick_sort.c
+		quick_sort.c\
+		swap.c\
+		push.c\
+		rotate.c\
+		reverse_rotate.c
 OBJS := $(SRCS:.c=.o)
 RM := rm -rf
 HEADER := push_swap.h
@@ -31,3 +34,5 @@ clean:
 fclean: clean
 	make fclean -C libft/
 	rm -rf $(NAME)
+
+re: fclean all

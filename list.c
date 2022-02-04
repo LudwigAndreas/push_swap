@@ -1,8 +1,8 @@
 #include "push_swap.h"
 
-t_elem *ft_newelem(int nbr, int index)
+t_elem	*ft_newelem(int nbr, int index)
 {
-	t_elem *elem;
+	t_elem	*elem;
 
 	elem = (t_elem *) malloc(sizeof(t_elem));
 	if (!elem)
@@ -25,7 +25,7 @@ void	ft_elemadd_front(t_elem **lst, t_elem *new)
 
 void	ft_elemadd_back(t_elem **lst, t_elem *new)
 {
-	t_elem 	*elem;
+	t_elem	*elem;
 
 	elem = NULL;
 	if (lst && new)
@@ -41,7 +41,7 @@ void	ft_elemadd_back(t_elem **lst, t_elem *new)
 	}
 }
 
-t_elem 	*ft_elemlast(t_elem *lst)
+t_elem	*ft_elemlast(t_elem *lst)
 {
 	if (!lst)
 		return (NULL);

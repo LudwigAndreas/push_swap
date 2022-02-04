@@ -4,7 +4,30 @@
 //TODO 32 linebreaks insted 24
 //TODO norminette
 
-int validator(int argc, char **argv, int array[])
+int	is_valid(char *arg)
+{
+	int	j;
+
+	if (ft_atoi(arg) > 2147483647
+		|| ft_atoi(arg) < (-2147483648) || ft_strlen(arg) > 11)
+		return (0);
+	j = 1;
+	if (!ft_isdigit(arg[0]) && arg[0] == '-')
+	{
+		if (!ft_isdigit(arg[1]))
+			return (0);
+		j = 1;
+	}
+	else if (!ft_isdigit(arg[0]))
+		return (0);
+	while (arg[j]) {
+		if (!ft_isdigit(arg[j++]))
+			return (0);
+	}
+	return (j);
+}
+
+int	validator(int argc, char **argv, int array[])
 {
 	int	i;
 	int	j;
@@ -14,22 +37,9 @@ int validator(int argc, char **argv, int array[])
 	i = 0;
 	while (i < argc - 1)
 	{
-		if (ft_atoi(argv[i + 1]) > 2147483647
-			|| ft_atoi(argv[i + 1]) < (-2147483648) || ft_strlen(argv[i + 1]) > 11)
+		if (!is_valid(argv[i + 1]))
 			return (0);
-        j = 1;
-        if (!ft_isdigit(argv[i + 1][0]) && argv[i + 1][0] == '-')
-        {
-            if (!ft_isdigit(argv[i + 1][1]))
-                return (0);
-            j = 2;
-        }
-        while (argv[i + 1][j]) {
-            if (!ft_isdigit(argv[i + 1][j++]))
-                return (0);
-		}
 		array[i] = ft_atoi(argv[i + 1]);
-		ft_putnbr_fd(array[i], 1); 			//trace
 		j = i - 1;
 		while (j >= 0)
 		{

@@ -24,6 +24,9 @@ typedef struct	s_vault
 	struct s_stack	*a;
 	struct s_stack	*b;
 	int				size;
+	int				min;
+	int				max;
+	int 			mid;
 
 }				t_vault;
 
@@ -35,10 +38,13 @@ void	ft_elemadd_back(t_elem **lst, t_elem *new);
 void	ft_elemadd_front(t_elem **lst, t_elem *new);
 t_elem	*ft_elemlast(t_elem *lst);
 void	quick_sort(int *numbers, int size);
-void	swap(t_stack *stack);
-void	push(t_stack *from, t_stack *to);
-void	rotate(t_stack *stack);
-void	reverse_rotate(t_stack *stack);
+void	swap(t_stack *stack, char *name, int mode);
+void	ss(t_stack *stack_a, t_stack *stack_b);
+void	push(t_stack *from, t_stack *to, char *name, int mode);
+void	rotate(t_stack *stack, char *name, int mode);
+void	rr(t_stack *stack_a, t_stack *stack_b);
+void	reverse_rotate(t_stack *stack, char *name, int mode);
+void	rrr(t_stack *stack_a, t_stack *stack_b);
 void	get_indexes(int argc, int *array, int *indexes);
 
 #endif
