@@ -30,9 +30,10 @@ typedef struct	s_vault
 
 }				t_vault;
 
+int		*largest_seq_len(int *array,t_vault *vault);
 int		validator(int argc, char **argv, int *array);
 int		is_sorted(int argc, int *arr);
-void	parse(int argc, int *arr, t_vault **vault);
+int		*parse(int argc, int *arr, t_vault **vault);
 t_elem	*ft_newelem(int nbr, int index);
 void	ft_elemadd_back(t_elem **lst, t_elem *new);
 void	ft_elemadd_front(t_elem **lst, t_elem *new);

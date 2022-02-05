@@ -17,7 +17,7 @@ void	get_minmax(t_vault *vault)
 	vault->mid = (int) (vault->max / 2);
 }
 
-void	parse(int argc, int *arr, t_vault **vault)
+int	*parse(int argc, int *arr, t_vault **vault)
 {
 	int	i;
 	int	*indexes;
@@ -42,5 +42,6 @@ void	parse(int argc, int *arr, t_vault **vault)
 		i++;
 	}
 	get_minmax(*vault);
-	free(indexes);
+//	free(indexes);
+	return(indexes);
 }

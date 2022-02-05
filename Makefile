@@ -11,7 +11,8 @@ SRCS := list.c\
 		swap.c\
 		push.c\
 		rotate.c\
-		reverse_rotate.c
+		reverse_rotate.c\
+		sort.c
 OBJS := $(SRCS:.c=.o)
 RM := rm -rf
 HEADER := push_swap.h

@@ -45,12 +45,15 @@ void	print_data(t_vault *vault, char *name)
 	ft_putendl_fd("- -", 1);
 	ft_putendl_fd("a b", 1);
 	ft_putendl_fd("------------------------------------------------------------------------------------------------------------", 1);
+	ft_putnbr_fd(vault->max, 1);
+	ft_putendl_fd("", 1);
 }
 
 int main(int argc, char **argv)
 {
 	t_vault *vault;
 	int *arr;
+	int *indexes;
 
 	arr = (int *) malloc(sizeof(int) * (argc - 1));
 	if (!arr)
@@ -66,10 +69,12 @@ int main(int argc, char **argv)
 	else
 	{
 		ft_putendl_fd("start sorting...", 1);			//trace
-		parse(argc, arr, &vault);
+		indexes = parse(argc, arr, &vault);
 	}
 	print_data(vault, "");
 	//TODO	sort(vault);
+
+	largest_seq_len(indexes, vault);
 
 	free(vault);
 	return (0);
