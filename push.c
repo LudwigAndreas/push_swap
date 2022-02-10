@@ -3,6 +3,7 @@
 void	push(t_stack *from, t_stack *to, char *name, int mode)
 {
 	t_elem	*temp;
+
 	if (from)
 	{
 		temp = from->head->next;

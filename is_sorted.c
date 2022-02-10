@@ -23,5 +23,19 @@ int	is_sorted(int argc, int *array)
 			return (0);
 		++i;
 	}
+	exit(0);
+}
+
+int	is_stack_sorted(t_stack *stack)
+{
+	t_elem	*elem;
+
+	elem = stack->head;
+	while (elem->next != NULL)
+	{
+		if (elem->next->index < elem->index)
+			return (0);
+		elem = elem->next;
+	}
 	return (1);
 }

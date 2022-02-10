@@ -1,8 +1,4 @@
 #include "push_swap.h"
-#include <stdio.h>
-
-//TODO 32 linebreaks insted 24
-//TODO norminette
 
 int	is_valid(char *arg)
 {

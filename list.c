@@ -10,6 +10,7 @@ t_elem	*ft_newelem(int nbr, int index)
 	elem->number = nbr;
 	elem->index = index;
 	elem->prev = NULL;
+	elem->score = 0;
 	elem->next = NULL;
 	return (elem);
 }

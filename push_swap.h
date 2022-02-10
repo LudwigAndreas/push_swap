@@ -8,6 +8,7 @@ typedef struct	s_elem
 {
 	int				number;
 	int				index;
+	int				score;
 	struct s_elem	*next;
 	struct s_elem	*prev;
 }				t_elem;
@@ -16,7 +17,6 @@ typedef struct	s_stack
 {
 	struct s_elem	*head;
 	int				size;
-	//*end?
 }				t_stack;
 
 typedef struct	s_vault
@@ -30,7 +30,11 @@ typedef struct	s_vault
 
 }				t_vault;
 
-int		*largest_seq_len(int *array,t_vault *vault);
+void	print_data(t_vault *vault, char *name);
+int		is_stack_sorted(t_stack *stack);
+void	sort(t_vault *vault, int *array);
+void	divide_a(t_vault *vault, int *array);
+int		*largest_seq_len(int *array, int size, int *ret_len);
 int		validator(int argc, char **argv, int *array);
 int		is_sorted(int argc, int *arr);
 int		*parse(int argc, int *arr, t_vault **vault);
