@@ -8,7 +8,6 @@ typedef struct	s_elem
 {
 	int				number;
 	int				index;
-	int				score;
 	struct s_elem	*next;
 	struct s_elem	*prev;
 }				t_elem;

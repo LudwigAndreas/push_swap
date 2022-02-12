@@ -30,7 +30,7 @@ int	*parse(int argc, int *arr, t_vault **vault)
 	(*vault)->min = 0;
 	(*vault)->mid = 0;
 	(*vault)->a = malloc(sizeof((*vault)->a));
-	(*vault)->b = malloc(sizeof((*vault)->a));
+	(*vault)->b = malloc(sizeof((*vault)->b));
 	(*vault)->b->head = NULL;
 	(*vault)->a->head = NULL;
 	(*vault)->a->size = argc - 1;
