@@ -36,12 +36,25 @@ void	push(t_stack *from, t_stack *to, char name, int mode)
 
 	if (from)
 	{
-		temp = from->head->next;
-		ft_elemadd_front(&(to->head), from->head);
-		temp->prev = NULL;
-		from->head = temp;
-		from->size--;
-		to->size++;
+		if (from->head->next)
+		{
+			temp = from->head->next;
+			ft_elemadd_front(&(to->head), from->head);
+			temp->prev = NULL;
+			from->head = temp;
+			from->size--;
+			to->size++;
+		}
+		else
+		{
+			temp = from->head;
+
+			temp->next = to->head;
+			temp->prev = NULL;
+			to->head->prev = temp;
+			to->head = temp;
+			from->head = NULL;
+		}
 		if (mode)
 		{
 			ft_putchar_fd('p', 1);

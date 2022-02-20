@@ -14,7 +14,7 @@
 
 void	get_minmax(t_vault *vault, int size)
 {
-	vault->max = size;
+	vault->max = size - 1;
 	vault->min = 0;
 	vault->mid = (int )(vault->max / 2);
 }

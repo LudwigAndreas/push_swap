@@ -26,16 +26,47 @@ int	is_sorted(int argc, int *array)
 	exit(0);
 }
 
+t_elem	*get_min(t_stack *stack)
+{
+	t_elem	*elem;
+	t_elem	*start;
+
+	elem = stack->head;
+	start = elem;
+	while (elem->next)
+	{
+		if (elem->index < start->index)
+			start = elem;
+		elem = elem->next;
+	}
+	return (start);
+}
+
 int	is_stack_sorted(t_stack *stack)
 {
 	t_elem	*elem;
+	t_elem	*start;
+	t_elem	*prev;
 
-	elem = stack->head;
-	while (elem->next != NULL)
+	start = get_min(stack);
+	prev = start;
+	elem = start;
+	while (1)
 	{
-		if (elem->next->index < elem->index)
+		if (elem->next)
+		{
+			if (elem->next == start)
+				return (1);
+			elem = elem->next;
+		}
+		else
+		{
+			if (stack->head == start)
+				return (1);
+			elem = stack->head;
+		}
+		if (prev->index > elem->index)
 			return (0);
-		elem = elem->next;
+		prev = elem;
 	}
-	return (1);
 }

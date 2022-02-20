@@ -20,6 +20,7 @@ void	free_all(int *arr1, int *arr2, t_vault *vault)
 
 	free(arr1);
 	free(arr2);
+	elem = vault->a->head;
 	while (elem)
 	{
 		next = elem->next;
