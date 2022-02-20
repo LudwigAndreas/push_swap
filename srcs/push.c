@@ -54,6 +54,8 @@ void	push(t_stack *from, t_stack *to, char name, int mode)
 			to->head->prev = temp;
 			to->head = temp;
 			from->head = NULL;
+			to->size++;
+			from->size--;
 		}
 		if (mode)
 		{

@@ -50,7 +50,7 @@ void	divide_a(t_vault *vault, int *array)
 			|| (size < 3 && vault->a->size == 3)
 			|| is_stack_sorted(vault->a))
 			break ;
-		if ((size > 3 && !ft_isin_seq(elem, seq, size))
+		if ((size >= 3 && !ft_isin_seq(elem, seq, size))
 			|| (size < 3 && !(elem->index == vault->max
 					|| elem->index == vault->min || elem->index == vault->mid)))
 			push(vault->a, vault->b, 'b', 1);

@@ -52,5 +52,10 @@ void	rr(t_stack *stack_a, t_stack *stack_b);
 void	reverse_rotate(t_stack *stack, char name, int mode);
 void	rrr(t_stack *stack_a, t_stack *stack_b);
 void	get_indexes(int argc, int *array, int *indexes);
+void	do_iter(int counter, int step, int mode, t_vault *vault);
+void	do_reverse_rotate(int counter, int step, t_vault *vault);
+void	do_rotate(int counter, int step, t_vault *vault);
+int	get_min_index(t_stack *stack);
+int	get_max_index(t_stack *stack);
 
 #endif

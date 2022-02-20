@@ -17,7 +17,9 @@ SRCS_FILES	:=	list.c\
 				sort.c\
 				print_data.c\
 				get_stack_a.c\
-				largest_seq.c
+				largest_seq.c\
+				tools.c\
+				do_rotate.c
 OBJS_FILES	:= $(SRCS_FILES:.c=.o)
 SRCS		:= $(addprefix $(SRC_DIR), $(SRCS_FILES))
 OBJS		:= $(addprefix $(OBJ_DIR), $(OBJS_FILES))

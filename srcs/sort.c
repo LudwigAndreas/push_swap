@@ -12,20 +12,6 @@
 
 #include "../includes/push_swap.h"
 
-int	max(int a, int b)
-{
-	if (a > b)
-		return (a);
-	return (b);
-}
-
-int	min(int a, int b)
-{
-	if (a < b)
-		return (a);
-	return (b);
-}
-
 int	find_best_place(t_elem	*to_find, t_vault *vault)
 {
 	int		counter;
@@ -35,6 +21,12 @@ int	find_best_place(t_elem	*to_find, t_vault *vault)
 	counter = 0;
 	while (elem->next)
 	{
+		if (to_find->index > get_max_index(vault->a) && elem->index == get_min_index(vault->a))
+			break ;
+		else if (to_find->index < get_min_index(vault->a) && elem->index == get_min_index(vault->a))
+			break ;
+		else if (vault->a->head->index - 1 == to_find->index)
+			break ;
 		counter++;
 		if (elem->index < to_find->index && to_find->index < elem->next->index)
 			break ;
@@ -50,18 +42,19 @@ int find_elem_index(t_elem *to_find, t_vault *vault)
 
 	step = 0;
 	elem = vault->b->head;
-	while (elem->next)
+	while (elem)
 	{
 		if (elem == to_find)
 			break ;
 		step++;
+		elem = elem->next;
 	}
 	return (step);
 }
 
 int	get_scored(t_elem *to_score, int step, t_vault *vault)
 {
-	int		counter;
+	int	counter;
 
 	counter = find_best_place(to_score, vault);
 	if (counter >= vault->a->size / 2 && step >= vault->b->size / 2)
@@ -81,79 +74,6 @@ int	get_scored(t_elem *to_score, int step, t_vault *vault)
 	return (step + counter);
 }
 
-void	do_rotate(int counter, int step, t_vault *vault)
-{
-	while (counter != 0 || step != 0)
-	{
-		if (counter != 0 && step != 0)
-		{
-			counter--;
-			step--;
-			rr(vault->a, vault->b);
-		}
-		else if (counter != 0)
-		{
-			counter--;
-			rotate(vault->a, 'a', 1);
-		}
-		else
-		{
-			step--;
-			rotate(vault->b, 'b', 1);
-		}
-	}
-}
-
-void	do_reverse_rotate(int counter, int step, t_vault *vault)
-{
-	while (counter != 0 || step != 0)
-	{
-		if (counter != 0 && step != 0)
-		{
-			counter--;
-			step--;
-			rrr(vault->a, vault->b);
-		}
-		else if (counter != 0)
-		{
-			counter--;
-			reverse_rotate(vault->a, 'a', 1);
-		}
-		else
-		{
-			step--;
-			reverse_rotate(vault->b, 'b', 1);
-		}
-	}
-}
-
-void	do_iter(int counter, int step, int mode, t_vault *vault)
-{
-	while (counter != 0 || step != 0)
-	{
-		if (mode == 1 && counter != 0)
-		{
-			counter--;
-			reverse_rotate(vault->a, 'a', 1);
-		}
-		if (mode == 1 && step != 0)
-		{
-			step--;
-			rotate(vault->b, 'b', 1);
-		}
-		if (mode == 2 && counter != 0)
-		{
-			counter--;
-			rotate(vault->a, 'a', 1);
-		}
-		if (mode == 2 && step != 0)
-		{
-			step--;
-			reverse_rotate(vault->b, 'b', 1);
-		}
-	}
-}
-
 void	push_elem_back(t_elem *to_push_elem, t_vault *vault)
 {
 	int		counter;
@@ -161,8 +81,16 @@ void	push_elem_back(t_elem *to_push_elem, t_vault *vault)
 
 	step = find_elem_index(to_push_elem, vault);
 	counter = find_best_place(to_push_elem, vault);
+//	ft_putstr_fd("elem: ", 1);
+//	ft_putnbr_fd(to_push_elem->number, 1);
+//	ft_putstr_fd(" counter: ", 1);
+//	ft_putnbr_fd(counter, 1);
+//	ft_putstr_fd(" step: ", 1);
+//	ft_putnbr_fd(step, 1);
+//	ft_putstr_fd(" index: ", 1);
+//	ft_putnbr_fd(to_push_elem->index, 1);
 
-	if (counter >= vault->a->size / 2 && step >= vault->b->size / 2)
+	if (counter >= (vault->a->size / 2) && step >= (vault->b->size / 2))
 	{
 		counter = vault->a->size - counter;
 		step = vault->b->size - step;
@@ -198,6 +126,10 @@ void	put_elem_b_to_a(t_vault *vault)
 		elem = vault->b->head;
 		while (elem) {
 			temp = get_scored(elem, step, vault);
+//			ft_putnbr_fd(elem->number, 1);		//trace
+//			ft_putstr_fd(" : ", 1);				//trace
+//			ft_putnbr_fd(temp, 1);				//trace
+//			ft_putstr_fd(" | ", 1);				//trace
 			if (min > temp)
 			{
 				min = temp;
@@ -206,7 +138,9 @@ void	put_elem_b_to_a(t_vault *vault)
 			step++;
 			elem = elem->next;
 		}
+//		ft_putendl_fd("++", 1);					//trace
 		push_elem_back(min_elem, vault);
+//		print_data(vault, "");
 	}
 }
 
@@ -216,6 +150,7 @@ void	sort(t_vault *vault, int *array)
 	int c;
 
 	divide_a(vault, array);
+//	print_data(vault, "after divide");
 	put_elem_b_to_a(vault);
 	c = 0;
 	elem = vault->a->head;
@@ -224,7 +159,12 @@ void	sort(t_vault *vault, int *array)
 		c++;
 		elem = elem->next;
 	}
-	if (c > vault->a->size / 2)
-		do_reverse_rotate(vault->a->size - c, 0, vault);
-	do_rotate(c, 0, vault);
+	while (vault->a->head->index != 0)
+	{
+		if (c > vault->a->size / 2)
+			reverse_rotate(vault->a, 'a', 1);
+		else
+			rotate(vault->a, 'a', 1);
+	}
+
 }

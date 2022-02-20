@@ -17,7 +17,7 @@ void	reverse_rotate(t_stack *stack, char name, int mode)
 	t_elem	*first;
 	t_elem	*last;
 
-	if (stack->head != NULL)
+	if (stack->head && stack->head->next)
 	{
 		first = stack->head;
 		last = first;
