@@ -4,5 +4,7 @@
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/libft" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/libftprintf" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/push_swap_checker" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/tester" vcs="Git" />
   </component>
 </project>

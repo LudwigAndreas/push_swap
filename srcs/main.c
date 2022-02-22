@@ -50,7 +50,7 @@ int	main(int argc, char **argv)
 	indexes = parse(argc, arr, &vault);
 //	print_data(vault, "");
 	sort(vault, indexes);
-	print_data(vault, "");
+//	print_data(vault, "");
 	free_all(arr, indexes, vault);
 	return (0);
 }

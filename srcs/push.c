@@ -11,25 +11,44 @@
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-/*
-void	push(t_stack *from, t_stack *to, char *name, int mode)
+
+void	push(t_stack *from, t_stack *to, char name, int mode)
 {
 	t_elem	*temp;
 
 	if (from)
 	{
-		temp = from->head->next;
-		ft_elemadd_front(&(to->head), from->head);
-		temp->prev = NULL;
-		from->head = temp;
-		from->size--;
-		to->size++;
+ 		if (from->head->next)
+ 		{
+			temp = from->head->next;
+			ft_elemadd_front(&(to->head), from->head);
+			temp->prev = NULL;
+			from->head = temp;
+			from->size--;
+			to->size++;
+		}
+		else
+		{
+			temp = from->head;
+
+			temp->next = to->head;
+			temp->prev = NULL;
+			to->head->prev = temp;
+			to->head = temp;
+			from->head = NULL;
+			to->size++;
+			from->size--;
+		}
 		if (mode)
-			ft_putendl_fd(name, 1);
+		{
+			ft_putchar_fd('p', 1);
+			ft_putchar_fd(name, 1);
+			ft_putendl_fd("", 1);
+		}
 	}
 }
-*/
 
+/*
 void	push(t_stack *from, t_stack *to, char name, int mode)
 {
 	t_elem	*temp;
@@ -65,3 +84,4 @@ void	push(t_stack *from, t_stack *to, char name, int mode)
 		}
 	}
 }
+*/

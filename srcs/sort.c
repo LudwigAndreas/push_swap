@@ -25,7 +25,7 @@ int	find_best_place(t_elem	*to_find, t_vault *vault)
 			break ;
 		else if (to_find->index < get_min_index(vault->a) && elem->index == get_min_index(vault->a))
 			break ;
-		else if (vault->a->head->index - 1 == to_find->index)
+		else if (vault->a->head->index > to_find->index && ft_elemlast(vault->a->head)->index < to_find->index)
 			break ;
 		counter++;
 		if (elem->index < to_find->index && to_find->index < elem->next->index)
@@ -90,11 +90,15 @@ void	push_elem_back(t_elem *to_push_elem, t_vault *vault)
 //	ft_putstr_fd(" index: ", 1);
 //	ft_putnbr_fd(to_push_elem->index, 1);
 
-	if (counter >= (vault->a->size / 2) && step >= (vault->b->size / 2))
+	if (counter >= (vault->a->size / 2) + 1 && step >= (vault->b->size / 2) + 1 && vault->b->size != 0)
 	{
+//		ft_putnbr_fd(counter, 1);
+//		ft_putnbr_fd(step, 1);
 		counter = vault->a->size - counter;
 		step = vault->b->size - step;
+
 		do_reverse_rotate(counter, step, vault);
+//		print_data(vault, "rra");
 		push(vault->b, vault->a, 'a', 1);
 		return ;
 	}
@@ -149,9 +153,14 @@ void	sort(t_vault *vault, int *array)
 	t_elem	*elem;
 	int c;
 
-	divide_a(vault, array);
-//	print_data(vault, "after divide");
-	put_elem_b_to_a(vault);
+	if (try_sort_one_stack(vault, array))
+		return;
+	else
+	{
+		divide_a(vault, array);
+//		print_data(vault, "after divide");
+		put_elem_b_to_a(vault);
+	}
 	c = 0;
 	elem = vault->a->head;
 	while (elem->index != 0 && elem->next)
