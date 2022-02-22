@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   tools.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lsherry <lsherry@student.21-school.ru>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/02/22 12:43:10 by lsherry           #+#    #+#             */
+/*   Updated: 2022/02/22 12:43:13 by lsherry          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 int	max(int a, int b)
 {
 	if (a > b)
@@ -35,4 +47,47 @@ int	get_min_index(t_stack *stack)
 		elem = elem->next;
 	}
 	return (min);
+}
+
+int	find_best_place(t_elem	*to_find, t_vault *vault)
+{
+	int		counter;
+	t_elem	*elem;
+
+	elem = vault->a->head;
+	counter = 0;
+	while (elem->next)
+	{
+		if (to_find->index > get_max_index(vault->a)
+			&& elem->index == get_min_index(vault->a))
+			break ;
+		else if (to_find->index < get_min_index(vault->a)
+			&& elem->index == get_min_index(vault->a))
+			break ;
+		else if (vault->a->head->index > to_find->index
+			&& ft_elemlast(vault->a->head)->index < to_find->index)
+			break ;
+		counter++;
+		if (elem->index < to_find->index && to_find->index < elem->next->index)
+			break ;
+		elem = elem->next;
+	}
+	return (counter);
+}
+
+int	find_elem_index(t_elem *to_find, t_vault *vault)
+{
+	int		step;
+	t_elem	*elem;
+
+	step = 0;
+	elem = vault->b->head;
+	while (elem)
+	{
+		if (elem == to_find)
+			break ;
+		step++;
+		elem = elem->next;
+	}
+	return (step);
 }

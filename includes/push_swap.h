@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lsherry <lsherry@student.21-school.ru>     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/02/22 13:11:41 by lsherry           #+#    #+#             */
+/*   Updated: 2022/02/22 13:11:44 by lsherry          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
 # include "../libft/libft.h"
 # include <stdlib.h>
 
-typedef struct	s_elem
+typedef struct s_elem
 {
 	int				number;
 	int				index;
@@ -12,20 +24,20 @@ typedef struct	s_elem
 	struct s_elem	*prev;
 }				t_elem;
 
-typedef struct	s_stack
+typedef struct s_stack
 {
 	struct s_elem	*head;
 	int				size;
 }				t_stack;
 
-typedef struct	s_vault
+typedef struct s_vault
 {
 	struct s_stack	*a;
 	struct s_stack	*b;
 	int				size;
 	int				min;
 	int				max;
-	int 			mid;
+	int				mid;
 
 }				t_vault;
 
@@ -58,5 +70,7 @@ void	do_rotate(int counter, int step, t_vault *vault);
 int		get_min_index(t_stack *stack);
 int		get_max_index(t_stack *stack);
 int		try_sort_one_stack(t_vault *vault, int *array);
+int		find_elem_index(t_elem *to_find, t_vault *vault);
+int		find_best_place(t_elem	*to_find, t_vault *vault);
 
 #endif
