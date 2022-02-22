@@ -52,7 +52,6 @@ void	push_elem_back(t_elem *to_push_elem, t_vault *vault)
 		do_iter(vault->a->size - counter, step, 1, vault);
 	else if (step > vault->b->size / 2 && counter <= vault->a->size / 2)
 		do_iter(counter, vault->b->size - step, 2, vault);
-//	print_data(vault, "");
 	push(vault->b, vault->a, 'a', 1);
 }
 
@@ -81,7 +80,6 @@ void	put_elem_b_to_a(t_vault *vault)
 			elem = elem->next;
 		}
 		push_elem_back(min_elem, vault);
-//		print_data(vault, "");
 	}
 }
 
@@ -95,7 +93,6 @@ void	sort(t_vault *vault, int *array)
 	else
 	{
 		divide_a(vault, array);
-//		print_data(vault, "");
 		put_elem_b_to_a(vault);
 	}
 	c = 0;

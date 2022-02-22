@@ -13,7 +13,7 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include "../libft/libft.h"
+# include "../../../libft/libft.h"
 # include <stdlib.h>
 
 typedef struct s_elem
@@ -41,7 +41,6 @@ typedef struct s_vault
 
 }				t_vault;
 
-void	print_data(t_vault *vault, char *name);
 int		max(int a, int b);
 int		is_stack_sorted(t_stack *stack);
 void	sort(t_vault *vault, int *array);

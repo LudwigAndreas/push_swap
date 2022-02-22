@@ -49,7 +49,6 @@ int	main(int argc, char **argv)
 	is_sorted(argc, arr);
 	indexes = parse(argc, arr, &vault);
 	sort(vault, indexes);
-//	print_data(vault, "");
 	free_all(arr, indexes, vault);
 	return (0);
 }
