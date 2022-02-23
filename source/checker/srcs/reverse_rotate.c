@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../includes/checker.h"
 
 void	rr_three(t_stack *stack)
 {
@@ -31,7 +31,7 @@ void	reverse_rotate(t_stack *stack, char name, int mode)
 	t_elem	*first;
 	t_elem	*last;
 
-	if (stack->head && stack->head->next)
+	if (stack && stack->head && stack->head->next)
 	{
 		if (stack->size == 3)
 			rr_three(stack);
@@ -51,8 +51,11 @@ void	reverse_rotate(t_stack *stack, char name, int mode)
 	}
 }
 
-void	rrr(t_stack *stack_a, t_stack *stack_b)
+void	rrr(t_stack *stack_a, t_stack *stack_b, int mode)
 {
 	reverse_rotate(stack_a, 'r', 0);
-	reverse_rotate(stack_b, 'r', 1);
+	if (mode)
+		reverse_rotate(stack_b, 'r', 1);
+	else
+		reverse_rotate(stack_b, 'r', 0);
 }

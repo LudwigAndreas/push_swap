@@ -5,12 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsherry <lsherry@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/18 17:13:24 by lsherry           #+#    #+#             */
-/*   Updated: 2022/02/18 17:13:25 by lsherry          ###   ########.fr       */
+/*   Created: 2022/02/24 00:18:12 by lsherry           #+#    #+#             */
+/*   Updated: 2022/02/24 00:18:27 by lsherry          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../includes/checker.h"
 
 t_elem	*ft_newelem(int nbr, int index, t_elem *prev)
 {

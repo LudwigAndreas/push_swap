@@ -53,7 +53,7 @@ RM			:= rm -rf
 HEADER		:= libft.h
 .PHONY: all clean fclean re bonus
 
-%.o: %.c $(HEADER)
+%.o: %.c $(HEADER) $(SRCS)
 	$(CC) $(CFLAGS) $< -o $@ -include $(HEADER)
 
 $(NAME): $(OBJS) $(HEADER)

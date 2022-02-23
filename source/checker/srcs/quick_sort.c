@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../includes/checker.h"
 
 static void	ft_swap(int *a, int *b)
 {

@@ -5,12 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsherry <lsherry@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/18 17:12:54 by lsherry           #+#    #+#             */
-/*   Updated: 2022/02/18 17:12:59 by lsherry          ###   ########.fr       */
+/*   Created: 2022/02/24 00:17:48 by lsherry           #+#    #+#             */
+/*   Updated: 2022/02/24 00:17:51 by lsherry          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../includes/checker.h"
 
 int	*new_arr(int argc, int *array)
 {

@@ -5,18 +5,19 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsherry <lsherry@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/18 17:13:36 by lsherry           #+#    #+#             */
-/*   Updated: 2022/02/18 17:13:38 by lsherry          ###   ########.fr       */
+/*   Created: 2022/02/24 00:18:43 by lsherry           #+#    #+#             */
+/*   Updated: 2022/02/24 00:18:45 by lsherry          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../includes/checker.h"
 
 void	get_minmax(t_vault *vault, int size)
 {
 	vault->max = size - 1;
 	vault->min = 0;
 	vault->mid = (int )(vault->max + 1 / 2);
+	vault->size = size;
 }
 
 int	*parse(int argc, int *arr, t_vault **vault)

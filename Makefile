@@ -1,55 +1,34 @@
-NAME		:= push_swap
-CFLAGS		:= -Wall -Wextra -Werror -c
-OFLAGS		:= -Wall -Wextra -Werror -o
-SRC_DIR		:= ./srcs/
-OBJ_DIR		:= ./objs/
-SRCS_FILES	:=	list.c\
-				main.c\
-				parse.c\
-				validator.c\
-				is_sorted.c\
-				get_indexes.c\
-				quick_sort.c\
-				swap.c\
-				push.c\
-				rotate.c\
-				reverse_rotate.c\
-				sort.c\
-				get_stack_a.c\
-				largest_seq.c\
-				tools.c\
-				do_rotate.c\
-				sort_one_stack.c\
-				print_data.c
-OBJS_FILES	:= $(SRCS_FILES:.c=.o)
-SRCS		:= $(addprefix $(SRC_DIR), $(SRCS_FILES))
-OBJS		:= $(addprefix $(OBJ_DIR), $(OBJS_FILES))
-RM			:= rm -rf
-HEADER		:= includes/push_swap.h
+PUSH_SWAP		:= push_swap
+CHECKER			:= checker
+OBJ_DIR			:= objects/
+CH_DIR			:= source/checker/
+PS_DIR			:= source/push_swap/
 
 .PHONY: all clean fclean re
 
-all: obj $(NAME)
+all: $(CHECKER) $(PUSH_SWAP)
 
-obj: $(SRCS)
+obj:
 	mkdir -p $(OBJ_DIR)
 
-$(OBJ_DIR)%.o: $(SRC_DIR)%.c
-	gcc $(CFLAGS) $< -o $@ -include $(HEADER)
+$(CHECKER): obj
+	make -C $(CH_DIR)
 
-$(NAME): $(OBJS) $(HEADER)
-	make re -C libft/
-	gcc $(OFLAGS) $(NAME) $(OBJS) libft/libft.a -include /libft/libft.h -include $(HEADER)
-
-run: ./$(NAME)
-	valgrind --leak-check=full --show-leak-kinds=all  --track-origins=yes --verbose  --log-file=valgrind-out.txt ./$(NAME) $(ARGS)
+$(PUSH_SWAP): obj
+	make -C $(PS_DIR)
 
 clean:
-	make clean -C libft/
+	make clean -C $(CH_DIR)
+	make clean -C $(PS_DIR)
 	rm -rf $(OBJ_DIR)
 
-fclean: clean
-	make fclean -C libft/
-	rm -f $(NAME)
+fclean:
+	make fclean -C $(CH_DIR)
+	make fclean -C $(PS_DIR)
+	rm -rf $(OBJ_DIR)
 
-re: fclean all
+re:
+	rm -rf $(OBJ_DIR)
+	make re -C $(CH_DIR)
+	make re -C $(PS_DIR)
+

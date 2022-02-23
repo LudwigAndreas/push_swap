@@ -1,9 +1,9 @@
-PROJ_NAME			:=	push_swap
+PROJ_NAME		:=	push_swap
 MAIN_DIR		:= ../../
 NAME			:= $(addprefix $(MAIN_DIR), $(PROJ_NAME))
 CFLAGS			:= -Wall -Wextra -Werror -c
 OFLAGS			:= -Wall -Wextra -Werror -o
-SRC_DIR			:= ./srcs/
+SRC_DIR			:= srcs/
 OBJ_DIR			:= ../../objects/push_swap_objs/
 SRCS_FILES		:=	list.c\
 					main.c\
@@ -40,7 +40,7 @@ $(OBJ_DIR)%.o: $(SRC_DIR)%.c
 	gcc $(CFLAGS) $< -o $@ -include $(HEADER)
 
 $(NAME): $(OBJS) $(HEADER)
-	make re -C $(LIBFTDIR_PATH)
+	make -C $(LIBFTDIR_PATH)
 	gcc $(OFLAGS) $(NAME) $(OBJS) $(LIBFTDIR_PATH)libft.a -include $(LIBFTDIR_PATH)libft.h -include $(HEADER)
 
 clean:

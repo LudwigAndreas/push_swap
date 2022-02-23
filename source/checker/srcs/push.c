@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../includes/checker.h"
 
 void	print_func_name(char *funcname, char stackname, int mode)
 {
@@ -40,7 +40,7 @@ void	push(t_stack *from, t_stack *to, char name, int mode)
 {
 	t_elem	*temp;
 
-	if (from)
+	if (from && from->head)
 	{
 		if (from->head->next)
 		{
