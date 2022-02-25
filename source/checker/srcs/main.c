@@ -6,7 +6,7 @@
 /*   By: lsherry <lsherry@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 00:18:31 by lsherry           #+#    #+#             */
-/*   Updated: 2022/02/24 00:18:34 by lsherry          ###   ########.fr       */
+/*   Updated: 2022/02/25 20:16:52 by lsherry          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	free_all(t_vault *vault, int *arr)
 {
-	t_elem *elem;
-	t_elem *next;
+	t_elem	*elem;
+	t_elem	*next;
 
 	elem = vault->a->head;
 	while (elem)

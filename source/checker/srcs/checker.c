@@ -6,7 +6,7 @@
 /*   By: lsherry <lsherry@student.21-school.ru>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 00:17:19 by lsherry           #+#    #+#             */
-/*   Updated: 2022/02/24 00:17:23 by lsherry          ###   ########.fr       */
+/*   Updated: 2022/02/25 20:18:19 by lsherry          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,22 +88,22 @@ int	wait_input(t_vault *vault)
 
 void	checker(t_vault *vault)
 {
-	int		check;
+	int	check;
 
 	check = wait_input(vault);
 	if (!check)
 	{
 		ft_putendl_fd("Error", 2);
-		return;
+		return ;
 	}
 	if (check == -1)
 	{
 		ft_putendl_fd("KO", 1);
-		return;
+		return ;
 	}
 	else
 	{
 		ft_putendl_fd("OK", 1);
-		return;
+		return ;
 	}
 }
