@@ -23,7 +23,7 @@ int	is_sorted(int argc, int *array)
 			return (0);
 		++i;
 	}
-	exit(0);
+	return (1);
 }
 
 t_elem	*get_min(t_stack *stack)

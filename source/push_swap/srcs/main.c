@@ -44,9 +44,14 @@ int	main(int argc, char **argv)
 	if (validator(argc, argv, arr) == 0)
 	{
 		ft_putendl_fd("Error", 2);
+		free(arr);
 		return (0);
 	}
-	is_sorted(argc, arr);
+	if (is_sorted(argc, arr))
+	{
+		free(arr);
+		return (0);
+	}
 	indexes = parse(argc, arr, &vault);
 	sort(vault, indexes);
 	free_all(arr, indexes, vault);

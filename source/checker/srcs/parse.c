@@ -20,7 +20,7 @@ void	get_minmax(t_vault *vault, int size)
 	vault->size = size;
 }
 
-int	*parse(int argc, int *arr, t_vault **vault)
+void	parse(int argc, int *arr, t_vault **vault)
 {
 	int		i;
 	int		*indexes;
@@ -30,21 +30,21 @@ int	*parse(int argc, int *arr, t_vault **vault)
 	*vault = (t_vault *) malloc(sizeof(t_vault));
 	if (!(*vault) || !indexes)
 		exit(0);
-	(*vault)->a = malloc(sizeof((*vault)->a));
-	(*vault)->b = malloc(sizeof((*vault)->a));
+	(*vault)->a = malloc(sizeof(t_stack));
+	(*vault)->b = malloc(sizeof(t_stack));
 	(*vault)->b->head = NULL;
 	(*vault)->a->head = NULL;
 	(*vault)->a->size = argc - 1;
 	(*vault)->b->size = 0;
-	i = 1;
+	i = 0;
 	get_indexes(argc, arr, indexes);
 	prev = NULL;
-	while (i < argc)
+	while (i < argc - 1)
 	{
-		prev = ft_newelem(arr[i - 1], indexes[i - 1], prev);
+		prev = ft_newelem(arr[i], indexes[i], prev);
 		ft_elemadd_back(&((*vault)->a->head), prev);
 		i++;
 	}
+	free(indexes);
 	get_minmax(*vault, argc - 1);
-	return (indexes);
 }

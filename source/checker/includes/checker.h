@@ -30,13 +30,11 @@ typedef struct s_vault
 
 }				t_vault;
 
-void	print_data(t_vault *vault, char *name);
 void	print_func_name(char *funcname, char stackname, int mode);
 int		validator(int argc, char **argv, int array[]);
-int		is_sorted(int argc, int *array);
 void	checker(t_vault *vault);
 int		is_stack_sorted(t_stack *stack);
-int		*parse(int argc, int *arr, t_vault **vault);
+void	parse(int argc, int *arr, t_vault **vault);
 void	do_command(int com_index, t_vault *vault);
 void	push(t_stack *from, t_stack *to, char name, int mode);
 void	swap(t_stack *stack, char name, int mode);

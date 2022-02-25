@@ -24,7 +24,9 @@ char	*ft_strndup(char *src, unsigned int n)
 		i++;
 	if (i < n)
 		n = i;
-	dest = (char *) malloc(n + 1);
+	dest = (char *) malloc(sizeof(char) * (n + 1));
+	if (!dest)
+		return (NULL);
 	while (j < n)
 	{
 		dest[j] = src[j];
@@ -43,6 +45,7 @@ int	ft_readline(int fd, char **str)
 
 	pos = 0;
 	rd = 1;
+	ch = 0;
 	while (rd > 0)
 	{
 		rd = read(fd, &ch, 1);
@@ -51,7 +54,7 @@ int	ft_readline(int fd, char **str)
 		line[pos] = ch;
 		pos++;
 	}
-	line[pos] = '\0';
+	line[pos] = 0;
 	*str = ft_strndup(line, pos);
 	return (ft_strlen(*str));
 }

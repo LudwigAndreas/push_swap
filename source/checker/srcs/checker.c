@@ -68,20 +68,18 @@ int	wait_input(t_vault *vault)
 	char	*command;
 	int		com_index;
 
-	com_index = 0;
 	while (1)
 	{
 		command = NULL;
 		rd = ft_readline(0, &command);
+		com_index = is_com_valid(command);
+		free(command);
 		if (rd == 0)
 			break ;
-		com_index = is_com_valid(command);
 		if (!com_index)
 			return (0);
-		free(command);
 		do_command(com_index, vault);
 	}
-	print_data(vault, "");
 	if (is_stack_sorted(vault->a) && vault->b->head == NULL
 		&& vault->a->size == vault->size)
 		return (1);
@@ -96,16 +94,16 @@ void	checker(t_vault *vault)
 	if (!check)
 	{
 		ft_putendl_fd("Error", 2);
-		exit(0);
+		return;
 	}
 	if (check == -1)
 	{
 		ft_putendl_fd("KO", 1);
-		exit(0);
+		return;
 	}
-	if (check == 1)
+	else
 	{
 		ft_putendl_fd("OK", 1);
-		exit(0);
+		return;
 	}
 }

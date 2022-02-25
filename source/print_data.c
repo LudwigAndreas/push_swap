@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/checker.h"
+#include "checker/includes/checker.h"
 
 void	print_name(char *name)
 {

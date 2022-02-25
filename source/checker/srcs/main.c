@@ -12,26 +12,47 @@
 
 #include "../includes/checker.h"
 
+void	free_all(t_vault *vault, int *arr)
+{
+	t_elem *elem;
+	t_elem *next;
+
+	elem = vault->a->head;
+	while (elem)
+	{
+		next = elem->next;
+		free(elem);
+		elem = next;
+	}
+	elem = vault->b->head;
+	while (elem)
+	{
+		next = elem->next;
+		free(elem);
+		elem = next;
+	}
+	free(vault->a);
+	free(vault->b);
+	free(vault);
+	free(arr);
+}
+
 int	main(int argc, char **argv)
 {
 	t_vault	*vault;
 	int		*arr;
-	char	*input;
 
-	input = (char *) malloc(sizeof(char) * 1);
 	arr = (int *) malloc(sizeof(int) * (argc - 1));
 	if (argc < 2 || !arr)
 		return (0);
 	if (!validator(argc, argv, arr))
 	{
 		ft_putendl_fd("Error", 2);
+		free(arr);
 		return (0);
 	}
-	if (is_sorted(argc, arr))
-		return (0);
 	parse(argc, arr, &vault);
-	print_data(vault, "");
 	checker(vault);
-	print_data(vault, "");
+	free_all(vault, arr);
 	return (0);
 }

@@ -6,7 +6,9 @@ PS_DIR			:= source/push_swap/
 
 .PHONY: all clean fclean re
 
-all: $(CHECKER) $(PUSH_SWAP)
+all: $(PUSH_SWAP)
+
+bonus: $(CHECKER)
 
 obj:
 	mkdir -p $(OBJ_DIR)

@@ -13,7 +13,6 @@ SRCS_FILES		:=	checker.c\
 					list.c\
 					main.c\
 					parse.c\
-					print_data.c\
 					push.c\
 					quick_sort.c\
 					reverse_rotate.c\
